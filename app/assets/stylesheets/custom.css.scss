@@ -24,3 +24,31 @@ body {
   margin: 20px 0 0 25px;
   float: left;
 }
+
+.center {
+  text-align: center;
+}
+
+h1, h2, h3, h4 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #777;
+  font-weight: normal;
+}
+
+.left {
+  text-align: left;
+  letter-spacing: .5px;
+}
