@@ -5,9 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-chefs = Chef.create([{chefname: "bob", email: "bob@example.com"},
-                     {chefname: "john", email: "john@example.com"},
-                     {chefname: "bill", email: "bill@example.com"}])
+chefs = Chef.create([{chefname: "bob", email: "bob@example.com", password: "password"},
+                     {chefname: "john", email: "john@example.com", password: "password"},
+                     {chefname: "bill", email: "bill@example.com", password: "password"}])
 
 chef = Chef.first
 (1..3).each do |n|
