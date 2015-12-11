@@ -43,4 +43,8 @@
 <h5><%= link_to "Return to Recipes Listing", recipes_path, class: "btn btn-warning btn-small" %></h5>
 
 <%= render 'reviews/review' %>
-<%= render 'reviews/form' %>
+<% if logged_in? && current_user != @recipe.chef %>
+	<%= render 'reviews/form' %>
+<% else %>
+	<%= link_to "Want to write a review? Click here to Sign up", register_path %>
+<% end %>

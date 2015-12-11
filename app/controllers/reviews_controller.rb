@@ -14,6 +14,8 @@ class ReviewsController < ApplicationController
   end
   
   def destroy
+    @recipe = Recipe.find(params[:recipe_id])
+    @recipe.destroy
   end
   
   private
