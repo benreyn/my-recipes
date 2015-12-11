@@ -1,21 +1,11 @@
 class ReviewsController < ApplicationController
   
-  def index
-  end
-  
-  def show
-  end
-  
-  def new
-  end
-  
-  def edit
-  end
+  before_action :get_review, except: [:index, :new, :create]
   
   def create
-  end
-  
-  def update
+    @recipe = Recipe.find(params[:recipe_id])
+    @review = @recipe.reviews.create(review_params)
+    redirect_to recipe_path(@recipe)
   end
   
   def destroy
@@ -24,6 +14,7 @@ class ReviewsController < ApplicationController
   private
   
     def review_params
+      params.require(:comment).permit(:title, :body)
     end
   
 end

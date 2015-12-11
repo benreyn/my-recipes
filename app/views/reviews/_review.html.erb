@@ -1,0 +1,27 @@
+<div class="row">
+  <h2 class="recipe-reviews col-md-1">Reviews</h2>
+</div>
+
+<% @recipe.reviews.each do |review| %>
+<div class="row">
+
+	<div class="col-md-6 well">
+		<h4><%= review.title %></h4><hr>
+		<p><%= review.body %></p>
+		<p>
+			<span class='quiet'><small>writen: <%= time_ago_in_words(review.created_at) %> ago</small></span>,
+			<span class='quiet'><small>last updated: <%= time_ago_in_words(review.updated_at) %> ago</small></span>
+		</p>
+	</div>
+	
+	<div class="col-md-2">
+		<section class="chef_info center">
+		  <h2>Review by:</h2>
+			<%= link_to gravatar_for(review.chef, size: 100), review.chef %>
+			<h5><%= review.chef.chefname %></h5>
+		</section>
+	</div>
+	
+	
+</div>
+<% end %>
