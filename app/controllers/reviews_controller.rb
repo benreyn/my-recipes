@@ -1,11 +1,16 @@
 class ReviewsController < ApplicationController
   
-  before_action :get_review, except: [:index, :new, :create]
-  
   def create
     @recipe = Recipe.find(params[:recipe_id])
-    @review = @recipe.reviews.create(review_params)
-    redirect_to recipe_path(@recipe)
+    @review = @recipe.reviews.build(review_params)
+    @review.chef = current_user
+    if @review.save
+      flash[:success] = "Your review was submitted succesfully"
+      redirect_to recipe_path(@recipe)
+    else
+      flash[:danger] = "There was problem submitting your review"
+      redirect_to :back
+    end
   end
   
   def destroy
@@ -14,7 +19,7 @@ class ReviewsController < ApplicationController
   private
   
     def review_params
-      params.require(:comment).permit(:title, :body)
+      params.require(:review).permit(:title, :body)
     end
-  
+    
 end
