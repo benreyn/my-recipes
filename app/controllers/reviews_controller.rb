@@ -14,8 +14,9 @@ class ReviewsController < ApplicationController
   end
   
   def destroy
-    @recipe = Recipe.find(params[:recipe_id])
-    @recipe.destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to :back
   end
   
   private

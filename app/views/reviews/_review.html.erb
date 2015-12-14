@@ -12,13 +12,16 @@
 			<span class='quiet'><small>writen: <%= time_ago_in_words(review.created_at) %> ago</small></span>,
 			<span class='quiet'><small>last updated: <%= time_ago_in_words(review.updated_at) %> ago</small></span>
 		</p>
+		<% if logged_in? && (current_user == review.chef || current_user.admin?) %>
+			<%= link_to "Delete Review", review_path(review), method: :delete,
+			    data: { confirm: "Are you sure you want to delete this review?"}%>
+		<% end %>
 	</div>
 	
 	<div class="col-md-2">
 		<section class="chef_info center">
-		  <h2>Review by:</h2>
 			<%= link_to gravatar_for(review.chef, size: 100), review.chef %>
-			<h5><%= review.chef.chefname %></h5>
+			<h5>Reviewed By: <%= review.chef.chefname %></h5>
 		</section>
 	</div>
 	
